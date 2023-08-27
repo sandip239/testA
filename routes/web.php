@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\authcontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('register',[authcontroller::class,'registerView'])->name('registerView');
+Route::post('register',[authcontroller::class,'register'])->name('register');
+Route::get('login',[authcontroller::class,'loginView'])->name('loginview');
+Route::post('login',[authcontroller::class,'login'])->name('login');
 
 Route::get('register-view',[AdminController::class,'index'])->name('form-view');
 Route::post('register-data',[Admincontroller::class,'registerData'])->name('form-data');
